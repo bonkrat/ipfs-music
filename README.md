@@ -1,6 +1,6 @@
 _An unfinished project, more of an experiment to toy with some tech. Read at your own risk... not meant for other eyes or to be taken seriously as it was just for my own learning back in 2019_
 
-#ipfs-music
+# ipfs-music
 A peer-to-peer music streaming application built upon IPFS.  
 
 ![Screen Shot 2020-03-23 at 10 31 02 PM](https://user-images.githubusercontent.com/1292831/160134928-2ed38fd0-aba5-400e-82a1-2112ffa5cc19.png)
