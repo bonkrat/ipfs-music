@@ -1,68 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+_An unfinished project, more of an experiment to toy with some tech. Read at your own risk... not meant for other eyes or to be taken seriously as it was just for my own learning back in 2019_
 
-## Available Scripts
+#ipfs-music
+A peer-to-peer music streaming application built upon IPFS.  
 
-In the project directory, you can run:
+![Screen Shot 2020-03-23 at 10 31 02 PM](https://user-images.githubusercontent.com/1292831/160134928-2ed38fd0-aba5-400e-82a1-2112ffa5cc19.png)
 
-### `yarn start`
+# Goals
+- A Spotify-like application for playing music files. 
+- Built in search for playing music available on a peer-to-peer network (a là Napster or Soulseek). 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Stack
+* Electron
+* React
+* Apollo Client
+* [Howler](https://howlerjs.com)
+* TailwindCSS
+* IPFS/WebTorrent
+  * trying both as I was initially having trouble with IPFS at the time.  I think IPFS would have been the way to go however as I could not quite get WebTorrent to work.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## IPFS
+- Spin up an IPFS node and host their music on the IPFS network when the user selects their own library
+- Provide a separate web service with a searchable list of songs and their IPFS hashes (legally dubious).
 
-### `yarn test`
+## WebTorrent
+- Load WebTorrent, connect to a private tracker and seed their music to the other peers using the application. Pretty much the same functionality as the IPFS version
+- Provide a separate web service with a searchable list of songs and their magnet links (especially legally dubious).  
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting around the legally dubious?
+Hosting a web service that indexes IPFS hashes for MP3s seems a little less legally dubious than hosting magnet links. It's still dubious. To avoid any legal responsibility the idea was to eventually have a distributed database (or perhaps a serialized data structure downloaded from the P2P network on load) that would provide the data needed to index and search hashes locally.
 
-### `yarn build`
+# What is working?
+Recalling how some of this worked back in 2019...
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. User loads application and sets their music directory in settings. Settings are saved in a file locally (no user accounts for privacy).
+2. The application analyzes all of the files using `music-metadata`. Any non-music files are ignored. Music files are cached locally and displayed in a list in the application.
+3. Users can play their own files locally with Pause/Play controls.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## WIP
+- During development a hardcoded IPFS hash (or torrent magnet link) was used. I also had a local development setup for IPFS nodes (and later bittorrent tracker) for mocking the environment where the user would stream music from a torrent.  The P2P library would load the file as and stream it to the user as if it was locally. This was mostly working but was having issues. This is where I left off.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
