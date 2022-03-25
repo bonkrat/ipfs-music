@@ -35,6 +35,7 @@ Recalling how some of this worked back in 2019...
 1. User loads application and sets their music directory in settings. Settings are saved in a file locally (no user accounts for privacy).
 2. The application analyzes all of the files using `music-metadata`. Any non-music files are ignored. Music files are cached locally and displayed in a list in the application.
 3. Users can play their own files locally with Pause/Play controls.
+4. Cast music via Chromecast or Airplay to other devices.
 
 ## WIP
 - During development a hardcoded IPFS hash (or torrent magnet link) was used. I also had a local development setup for IPFS nodes (and later bittorrent tracker) for mocking the environment where the user would stream music from a torrent.  The P2P library would load the file as and stream it to the user as if it was locally. This was mostly working but was having issues. This is where I left off.
